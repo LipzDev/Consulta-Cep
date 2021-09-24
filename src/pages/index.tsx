@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Layout from "../components/Layout";
+import React from "react";
+import HomeTemplate from "../templates/HomeTemplate";
 
-const Home = (props: any) => {
-  return <Layout>// CONTEUDO //</Layout>;
+const index = () => {
+  return <HomeTemplate />;
 };
 
-export default Home;
+export default index;
