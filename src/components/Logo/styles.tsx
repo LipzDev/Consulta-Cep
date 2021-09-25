@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Logo = styled.div`
   img {
-    max-width: 90px;
+    max-width: 80px;
     vertical-align: middle;
   }
 `;
