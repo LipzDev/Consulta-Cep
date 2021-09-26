@@ -17,8 +17,8 @@ export default {
     },
   },
   colors: {
-    primary: "#5b1e17",
-    primaryMedium: "#805e5a",
+    primary: "#0398fc",
+    primaryMedium: "#75c5fa",
     primaryLight: "#cdbbb9",
     secondary: "#f1e3e2",
     secondaryMedium: "#ffffff",
@@ -27,6 +27,7 @@ export default {
     dangerDark: "#BC0000",
     dangerMedium: "#F50000",
     dangerLight: "#F56C6C",
+    mainBg: "#f8f8f8",
     white: "#FFF",
     black: "#141414",
     gray: "#8F8F8F",

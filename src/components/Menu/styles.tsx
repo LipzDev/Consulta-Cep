@@ -50,10 +50,10 @@ export const Li = styled.li<ActiveProps>`
 
     a {
       text-decoration: none;
-      color: ${active ? theme.colors.primaryMedium : theme.colors.white};
+      color: ${active ? theme.colors.primary : theme.colors.white};
 
       &:hover {
-        color: ${theme.colors.primaryMedium};
+        color: ${theme.colors.primary};
       }
     }
   `}

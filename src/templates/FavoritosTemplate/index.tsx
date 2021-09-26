@@ -33,7 +33,7 @@ const FavoritosTemplate = () => {
           <div>
             {favorite?.length === 0 && (
               <>
-                <small>Você não tem nada em favoritos</small>
+                <small>Você não tem nenhum CEP salvo!</small>
                 <br></br>
               </>
             )}

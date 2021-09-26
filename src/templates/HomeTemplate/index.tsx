@@ -4,6 +4,7 @@ import { Container } from "../../components/Container/styles";
 import { CardContext } from "../../contexts/CardContext";
 import * as Styles from "./styles";
 import BreadCrumb from "../../components/BreadCrumb";
+import theme from "../../styles/theme";
 
 export type DataTypes = {
   [key: string]: string;
@@ -43,42 +44,71 @@ const Home = () => {
         <Styles.Wrapper>
           <BreadCrumb page_1="/" page_2="/favoritos" />
 
-          <form
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) => zipCodeSearch(e)}
-          >
-            <input
-              type="text"
-              placeholder="CEP"
-              required
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setCep(e.target.value)
-              }
-            />
-            <button>Pesquisar</button>
-          </form>
+          <Styles.Content>
+            <Styles.CepContent>
+              <h1>Olá, seja bem vindo!</h1>
+              <small>Insira seu CEP abaixo:</small>
+              <Styles.Form
+                onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+                  zipCodeSearch(e)
+                }
+              >
+                <input
+                  type="text"
+                  placeholder="00000-000"
+                  required
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setCep(e.target.value)
+                  }
+                />
+                <button>
+                  <img src="../img/lupe.png" alt="Imagem de lupa" />
+                </button>
+              </Styles.Form>
 
-          {/* EXIBE AS INFORMAÇÕES DA API */}
+              {/* EXIBE AS INFORMAÇÕES DA API */}
 
-          {data && (
-            <div>
-              <p>Logradouro: {data?.logradouro}</p>
-              <p>Bairro: {data?.bairro}</p>
-              <p>Cidade: {data?.localidade}</p>
-              <p>Estado: {data?.uf}</p>
-            </div>
-          )}
-
-          {/* BOTÃO QUE FAZ SALVAR AOS FAVORITOS */}
-
-          <button
-            disabled={isBlocked ? true : false}
-            onClick={() => saveFavorite()}
-            title={
-              isBlocked ? "Para favoritar você deve inserir um CEP válido*" : ""
-            }
-          >
-            Favoritar
-          </button>
+              <Styles.LocaleContent>
+                {data && (
+                  <>
+                    <Styles.InfoCep>
+                      <p>
+                        Logradouro:{" "}
+                        {data?.logradouro ? data?.logradouro : "Não informado."}
+                      </p>
+                      <p>
+                        Bairro: {data?.bairro ? data?.bairro : "Não informado"}
+                      </p>
+                      <p>
+                        Cidade:{" "}
+                        {data?.localidade ? data?.localidade : "Não informado"}
+                      </p>
+                      <p>Estado: {data?.uf ? data.uf : "Não informado"}</p>
+                      <button
+                        disabled={isBlocked ? true : false}
+                        style={{
+                          backgroundColor: isBlocked
+                            ? "#ccc"
+                            : theme.colors.primary,
+                          color: isBlocked ? "#3e3e3e" : "white",
+                          cursor: isBlocked ? "no-drop" : "pointer",
+                        }}
+                        onClick={() => saveFavorite()}
+                        title={
+                          isBlocked
+                            ? "Insira outro CEP para favoritar*"
+                            : "Deseja salvar o CEP pesquisado ?*"
+                        }
+                      >
+                        {isBlocked ? "Salvo !" : "Salvar ?"}
+                      </button>
+                    </Styles.InfoCep>
+                    <img src="../img/car.gif" alt="Carro" />
+                  </>
+                )}
+              </Styles.LocaleContent>
+            </Styles.CepContent>
+          </Styles.Content>
         </Styles.Wrapper>
       </Container>
     </Layout>

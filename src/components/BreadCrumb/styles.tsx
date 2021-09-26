@@ -6,6 +6,7 @@ export const BreadCrumb = styled.ul`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+    margin-top: 20px;
 
     div {
       margin-left: 5px;
@@ -20,7 +21,7 @@ export const Li = styled.li<ActiveProps>`
 
     a {
       text-decoration: none;
-      color: ${active ? "blue" : "black"};
+      color: ${active ? "#0398fc" : "black"};
     }
   `}
 `;
