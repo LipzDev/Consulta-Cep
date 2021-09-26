@@ -8,11 +8,11 @@ type DataTypes = {
 };
 
 const Home = () => {
-  const [cep, setCep] = useState();
+  const [cep, setCep] = useState<string | undefined>();
   const [data, setData] = useState<DataTypes>();
-  const [favorite, setFavorite] = useState<any>();
+  const [favorite, setFavorite] = useState<DataTypes | string | any>();
   const [isBlocked, setIsBlocked] = useState<boolean>(true);
-  const [locale, setLocale] = useState<any>(() => {
+  const [locale, setLocale] = useState(() => {
     if (typeof window !== "undefined") {
       const itemInStorage = JSON.parse(localStorage.getItem("info") as string);
       if (!itemInStorage) return [];
@@ -22,7 +22,7 @@ const Home = () => {
 
   // FUNÇÃO QUE FAZ O FETCH
 
-  const zipCodeSearch = async (e: any) => {
+  const zipCodeSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsBlocked(false);
     try {
@@ -58,12 +58,16 @@ const Home = () => {
   return (
     <Layout>
       <Container>
-        <form onSubmit={(e: any) => zipCodeSearch(e)}>
+        <form
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => zipCodeSearch(e)}
+        >
           <input
             type="text"
             placeholder="CEP"
             required
-            onChange={(e: any) => setCep(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setCep(e.target.value)
+            }
           />
           <button>Pesquisar</button>
         </form>
