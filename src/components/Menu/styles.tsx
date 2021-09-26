@@ -1,4 +1,6 @@
 import styled, { css } from "styled-components";
+import { BreadCrumbProps } from "../BreadCrumb";
+type ActiveProps = Pick<BreadCrumbProps, "active">;
 
 export const Nav = styled.nav`
   ${({ theme }) => css`
@@ -7,17 +9,8 @@ export const Nav = styled.nav`
       align-items: center;
     }
 
-    li {
-      list-style: none;
-    }
-
     li + li {
       margin-left: 20px;
-    }
-
-    a {
-      text-decoration: none;
-      color: ${theme.colors.primaryLight};
     }
 
     @media screen and (max-width: 768px) {
@@ -42,14 +35,25 @@ export const Nav = styled.nav`
         margin-left: 0;
       }
 
-      a {
-        color: ${theme.colors.primaryLight};
-      }
-
       &.active {
         ul {
           left: 0;
         }
+      }
+    }
+  `}
+`;
+
+export const Li = styled.li<ActiveProps>`
+  ${({ theme, active }) => css`
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      color: ${active ? theme.colors.primaryMedium : theme.colors.white};
+
+      &:hover {
+        color: ${theme.colors.primaryMedium};
       }
     }
   `}

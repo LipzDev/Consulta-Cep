@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import theme from "../styles/theme";
 import GlobalStyles from "../styles/global";
 import { ThemeProvider } from "styled-components";
+import { CardProvider } from "../contexts/CardContext";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +21,9 @@ function App({ Component, pageProps }: AppProps) {
           ></link>
         </Head>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <CardProvider>
+          <Component {...pageProps} />
+        </CardProvider>
       </ThemeProvider>
     </>
   );
