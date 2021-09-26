@@ -14,11 +14,13 @@ const Home = () => {
     }
   });
   const [favorite, setFavorite] = useState<any>();
+  const [isBlocked, setIsBlocked] = useState<any>(false);
 
   // FUNÇÃO QUE FAZ O FETCH
 
   const zipCodeSearch = async (e: any) => {
     e.preventDefault();
+    setIsBlocked(false);
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const json = await response.json();
@@ -31,7 +33,8 @@ const Home = () => {
 
   // FUNÇÃO QUE SALVA OS DADOS
 
-  const handleFavorite = () => {
+  const saveFavorite = () => {
+    setIsBlocked(true);
     setLocale([...locale, data]);
   };
   useEffect(() => {
@@ -44,6 +47,12 @@ const Home = () => {
     const getStorage = window.localStorage.getItem("info");
     const storageContent = JSON.parse(getStorage!);
     setFavorite(storageContent);
+  };
+
+  const removeFavorite = (fav: any) => {
+    setLocale((prev: String[]) => prev.filter((el: any) => el.cep !== fav.cep));
+    localStorage.setItem("info", JSON.stringify(locale));
+    setFavorite(locale);
   };
 
   return (
@@ -79,20 +88,26 @@ const Home = () => {
           <small>Você não tem nada em favoritos</small>
         )}
 
-        {favorite?.map(fav => (
+        {favorite?.map((fav: any, id: any) => (
           <div>
             <p>Logradouro: {fav?.logradouro}</p>
             <p>Bairro: {fav?.bairro}</p>
             <p>Cidade: {fav?.localidade}</p>
             <p>Estado: {fav?.uf}</p>
+            <button onClick={() => removeFavorite(fav)}>Excluir</button>
             <br></br>
           </div>
         ))}
 
         {/* ATIVA AS FUNÇÕES SALVAR E FAVORITAR */}
 
-        <button onClick={() => handleFavorite()}>Save</button>
-        <button onClick={() => showFavorite()}>Favorite</button>
+        <button
+          disabled={isBlocked ? true : false}
+          onClick={() => saveFavorite()}
+        >
+          Favorite
+        </button>
+        <button onClick={() => showFavorite()}>Meus Favoritos</button>
       </Container>
     </Layout>
   );
