@@ -3,18 +3,22 @@ import Layout from "../../components/Layout";
 import { Container } from "../../components/Container/styles";
 import * as Styles from "./styles";
 
+type DataTypes = {
+  [key: string]: string;
+};
+
 const Home = () => {
   const [cep, setCep] = useState();
-  const [data, setData] = useState<any>();
-  const [locale, setLocale]: any = useState(() => {
+  const [data, setData] = useState<DataTypes>();
+  const [favorite, setFavorite] = useState<any>();
+  const [isBlocked, setIsBlocked] = useState<boolean>(true);
+  const [locale, setLocale] = useState<any>(() => {
     if (typeof window !== "undefined") {
-      const itemInStorage = JSON.parse(localStorage.getItem("info") as any);
+      const itemInStorage = JSON.parse(localStorage.getItem("info") as string);
       if (!itemInStorage) return [];
       return itemInStorage;
     }
   });
-  const [favorite, setFavorite] = useState<any>();
-  const [isBlocked, setIsBlocked] = useState<any>(false);
 
   // FUNÇÃO QUE FAZ O FETCH
 
@@ -31,7 +35,7 @@ const Home = () => {
     }
   };
 
-  // FUNÇÃO QUE SALVA OS DADOS
+  // FUNÇÃO QUE SALVA OS CARDS
 
   const saveFavorite = () => {
     setIsBlocked(true);
@@ -39,27 +43,21 @@ const Home = () => {
   };
   useEffect(() => {
     localStorage.setItem("info", JSON.stringify(locale));
+    setFavorite(locale);
   }, [locale]);
 
-  // FUNÇÃO QUE PUXA DADOS SALVOS
+  // FUNÇÃO QUE REMOVE OS CARDS
 
-  const showFavorite = () => {
-    const getStorage = window.localStorage.getItem("info");
-    const storageContent = JSON.parse(getStorage!);
-    setFavorite(storageContent);
-  };
-
-  const removeFavorite = (fav: any) => {
-    setLocale((prev: String[]) => prev.filter((el: any) => el.cep !== fav.cep));
+  const removeFavorite = (fav: DataTypes) => {
+    setLocale((prev: String[]) =>
+      prev.filter((el: any) => el?.cep !== fav?.cep),
+    );
     localStorage.setItem("info", JSON.stringify(locale));
-    setFavorite(locale);
   };
 
   return (
     <Layout>
       <Container>
-        {/* SERVE PARA OBTER O TEXTO DO INPUT */}
-
         <form onSubmit={(e: any) => zipCodeSearch(e)}>
           <input
             type="text"
@@ -70,7 +68,7 @@ const Home = () => {
           <button>Pesquisar</button>
         </form>
 
-        {/* MOSTRA AS INFORMAÇÕES DA API */}
+        {/* EXIBE AS INFORMAÇÕES DA API */}
 
         {data && (
           <div>
@@ -78,36 +76,40 @@ const Home = () => {
             <p>Bairro: {data?.bairro}</p>
             <p>Cidade: {data?.localidade}</p>
             <p>Estado: {data?.uf}</p>
-            <br></br>
           </div>
         )}
 
-        {/* MOSTRA OS CARDS FAVORITOS */}
+        {/* MOSTRA OS CEP FAVORITOS */}
 
         {favorite?.length === 0 && (
-          <small>Você não tem nada em favoritos</small>
+          <>
+            <small>Você não tem nada em favoritos</small>
+            <br></br>
+          </>
         )}
 
-        {favorite?.map((fav: any, id: any) => (
-          <div>
+        <button
+          disabled={isBlocked ? true : false}
+          onClick={() => saveFavorite()}
+          title={
+            isBlocked ? "Para salvar você deve inserir um cep válido!" : ""
+          }
+        >
+          Favoritar
+        </button>
+
+        {favorite?.map((fav: DataTypes, index: number) => (
+          <div key={index}>
+            <br></br>
             <p>Logradouro: {fav?.logradouro}</p>
             <p>Bairro: {fav?.bairro}</p>
             <p>Cidade: {fav?.localidade}</p>
             <p>Estado: {fav?.uf}</p>
             <button onClick={() => removeFavorite(fav)}>Excluir</button>
+            <hr />
             <br></br>
           </div>
         ))}
-
-        {/* ATIVA AS FUNÇÕES SALVAR E FAVORITAR */}
-
-        <button
-          disabled={isBlocked ? true : false}
-          onClick={() => saveFavorite()}
-        >
-          Favorite
-        </button>
-        <button onClick={() => showFavorite()}>Meus Favoritos</button>
       </Container>
     </Layout>
   );
