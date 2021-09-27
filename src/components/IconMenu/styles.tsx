@@ -14,13 +14,13 @@ export const Icon = styled.div`
     .icon-1 {
       width: 25px;
       height: 2px;
-      background-color: ${theme.colors.secondary};
+      background-color: ${theme.colors.white};
       transition: 0.5s;
     }
     .icon-2 {
       width: 25px;
       height: 2px;
-      background-color: ${theme.colors.secondary};
+      background-color: ${theme.colors.white};
       transition: 0.5s;
       margin: 5px 0;
       opacity: 1;
@@ -28,7 +28,7 @@ export const Icon = styled.div`
     .icon-3 {
       width: 25px;
       height: 2px;
-      background-color: ${theme.colors.secondary};
+      background-color: ${theme.colors.white};
       transition: 0.5s;
     }
 
