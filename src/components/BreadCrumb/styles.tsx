@@ -13,9 +13,7 @@ export const BreadCrumb = styled.ul`
       margin-right: 5px;
     }
 
-    @media screen and (max-width: 768px) {
-      margin-bottom: 50px;
-    }
+    margin-bottom: 30px;
   `}
 `;
 

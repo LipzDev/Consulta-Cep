@@ -9,7 +9,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Styles.Header>
+    <Styles.Header expanded={isOpen}>
       <Container>
         <Styles.Content>
           <Logo />

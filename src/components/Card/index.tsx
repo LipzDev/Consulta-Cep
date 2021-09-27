@@ -12,7 +12,7 @@ type CardProps = {
 const Card = ({ logradouro, bairro, cidade, estado, onClick }: CardProps) => {
   return (
     <Styles.Box>
-      <img src="../img/car.gif" alt="car" />
+      <img src="../img/map.png" alt="Mapa" />
       <div>
         <p>{logradouro}</p>
         <p>{bairro}</p>

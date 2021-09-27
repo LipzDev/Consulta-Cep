@@ -30,6 +30,12 @@ export const CepContent = styled.div`
     img {
       max-width: 100%;
     }
+
+    @media screen and (max-width: 768px) {
+      h1 {
+        margin-bottom: 0;
+      }
+    }
   `}
 `;
 
