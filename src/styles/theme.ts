@@ -17,7 +17,7 @@ export default {
     },
   },
   colors: {
-    primary: "#0398fc",
+    primary: "#6C63FF",
     primaryMedium: "#75c5fa",
     primaryLight: "#cdbbb9",
     secondary: "#f1e3e2",
@@ -31,6 +31,7 @@ export default {
     white: "#FFF",
     black: "#141414",
     gray: "#8F8F8F",
-    gradient: "linear-gradient(90deg, #0B80AD 0%, #0FAEEB 50%)",
+    darkGray: "#3e3e3e",
+    gradient: "linear-gradient(90deg, #1d1d1d 0%, #232323 50%)",
   },
 } as const;

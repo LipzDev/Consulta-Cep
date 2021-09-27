@@ -9,8 +9,7 @@ export type BreadCrumbProps = {
   active?: boolean;
 };
 
-const BreadCrumb = ({ page_1, page_2, active }: BreadCrumbProps) => {
-  const [isActive, setIsActive] = useState();
+const BreadCrumb = ({ page_1, page_2 }: BreadCrumbProps) => {
   const { pathname } = useRouter();
 
   return (

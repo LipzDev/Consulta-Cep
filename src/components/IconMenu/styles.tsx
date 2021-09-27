@@ -40,11 +40,11 @@ export const Icon = styled.div`
         opacity: 0;
       }
       .icon-3 {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: rotate(-45deg) translate(6px, -5px);
       }
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 769px) {
       display: none;
     }
   `}

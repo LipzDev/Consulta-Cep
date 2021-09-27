@@ -2,7 +2,10 @@ import styled, { css } from "styled-components";
 
 export const Footer = styled.footer`
   ${({ theme }) => css`
-    background-color: ${theme.colors.black};
+    background: ${theme.colors.gradient};
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     a {
       color: ${theme.colors.white};
       text-decoration: none;

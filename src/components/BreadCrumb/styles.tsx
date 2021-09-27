@@ -12,6 +12,10 @@ export const BreadCrumb = styled.ul`
       margin-left: 5px;
       margin-right: 5px;
     }
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 50px;
+    }
   `}
 `;
 
@@ -21,7 +25,7 @@ export const Li = styled.li<ActiveProps>`
 
     a {
       text-decoration: none;
-      color: ${active ? "#0398fc" : "black"};
+      color: ${active ? theme.colors.primary : "black"};
     }
   `}
 `;

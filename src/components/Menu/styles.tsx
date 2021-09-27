@@ -15,12 +15,13 @@ export const Nav = styled.nav`
 
     @media screen and (max-width: 768px) {
       ul {
+        z-index: 999;
         flex-direction: column;
         position: absolute;
         left: -100rem;
         top: 0;
 
-        background-color: red;
+        background: ${theme.colors.gradient};
         width: 100%;
         height: 100vh;
 
@@ -33,6 +34,11 @@ export const Nav = styled.nav`
 
       li + li {
         margin-left: 0;
+        margin-top: 20px;
+      }
+
+      a {
+        font-size: 20px;
       }
 
       &.active {

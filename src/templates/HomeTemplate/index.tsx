@@ -27,7 +27,7 @@ const Home = () => {
       setData(json);
     } catch (error) {
       console.error(error);
-      alert("Ocorreu um erro ao buscar o CEP");
+      alert("O CEP informado não existe!");
     }
   };
 
@@ -47,6 +47,7 @@ const Home = () => {
           <Styles.Content>
             <Styles.CepContent>
               <h1>Olá, seja bem vindo!</h1>
+              {!data && <img src="../img/img1.svg" alt="Map" />}
               <small>Insira seu CEP abaixo:</small>
               <Styles.Form
                 onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
@@ -84,6 +85,7 @@ const Home = () => {
                         {data?.localidade ? data?.localidade : "Não informado"}
                       </p>
                       <p>Estado: {data?.uf ? data.uf : "Não informado"}</p>
+
                       <button
                         disabled={isBlocked ? true : false}
                         style={{

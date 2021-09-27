@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import BreadCrumb from "../../components/BreadCrumb";
+import Card from "../../components/Card";
 import { Container } from "../../components/Container/styles";
 import Layout from "../../components/Layout";
 import { CardContext } from "../../contexts/CardContext";
@@ -34,22 +35,27 @@ const FavoritosTemplate = () => {
             {favorite?.length === 0 && (
               <>
                 <small>Você não tem nenhum CEP salvo!</small>
-                <br></br>
               </>
             )}
 
-            {favorite?.map((fav: DataTypes, index: number) => (
-              <div key={index}>
-                <br></br>
-                <p>Logradouro: {fav?.logradouro}</p>
-                <p>Bairro: {fav?.bairro}</p>
-                <p>Cidade: {fav?.localidade}</p>
-                <p>Estado: {fav?.uf}</p>
-                <button onClick={() => removeFavorite(fav)}>Excluir</button>
-                <hr />
-                <br></br>
-              </div>
-            ))}
+            <Styles.CardsSection>
+              {favorite?.map((fav: DataTypes, index: number) => (
+                <Card
+                  key={index}
+                  logradouro={`Logradouro: ${
+                    fav?.logradouro ? fav?.logradouro : "Não informado."
+                  }`}
+                  bairro={`Bairro: ${
+                    fav?.bairro ? fav?.bairro : "Não informado."
+                  }`}
+                  cidade={`Cidade: ${
+                    fav?.localidade ? fav?.localidade : "Não informado."
+                  }`}
+                  estado={`Estado: ${fav?.uf ? fav?.uf : "Não informado."}`}
+                  onClick={() => removeFavorite(fav)}
+                />
+              ))}
+            </Styles.CardsSection>
           </div>
         </Styles.Wrapper>
       </Container>

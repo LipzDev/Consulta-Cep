@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.section`
-  height: 100vh;
-  max-height: calc(100vh - 137px);
+  height: auto;
+  padding-bottom: 8rem;
 `;
 
 export const Content = styled.div`
@@ -16,7 +16,6 @@ export const CepContent = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: 70vh;
 
     h1 {
       margin-bottom: 30px;
@@ -25,6 +24,11 @@ export const CepContent = styled.div`
 
     small {
       margin-bottom: 3px;
+      margin-top: 30px;
+    }
+
+    img {
+      max-width: 100%;
     }
   `}
 `;
@@ -89,5 +93,11 @@ export const LocaleContent = styled.div`
     vertical-align: middle;
     border-radius: 5px;
     margin-top: 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    img {
+      max-width: 100%;
+    }
   }
 `;
