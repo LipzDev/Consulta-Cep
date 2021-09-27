@@ -20,6 +20,7 @@ export const Box = styled.div`
 
     div {
       margin-left: 15px;
+      min-height: 170px;
 
       button {
         position: absolute;
