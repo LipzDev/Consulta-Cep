@@ -69,6 +69,7 @@ export const Form = styled.form`
       min-height: 100%;
       border: 0;
       border-radius: 5px;
+      background: ${theme.colors.primary};
 
       display: flex;
       align-items: center;
@@ -102,16 +103,22 @@ export const InfoCep = styled.div`
 `;
 
 export const LocaleContent = styled.div`
-  img {
-    max-width: 380px;
-    vertical-align: middle;
-    border-radius: 5px;
-    margin-top: 50px;
-  }
-
-  @media screen and (max-width: 768px) {
-    img {
-      max-width: 100%;
+  ${({ theme }) => css`
+    p {
+      color: ${theme.colors.darkGray};
     }
-  }
+
+    img {
+      max-width: 380px;
+      vertical-align: middle;
+      border-radius: 5px;
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+      img {
+        max-width: 100%;
+      }
+    }
+  `}
 `;

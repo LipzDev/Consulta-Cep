@@ -42,16 +42,12 @@ const FavoritosTemplate = () => {
               {favorite?.map((fav: DataTypes, index: number) => (
                 <Card
                   key={index}
-                  logradouro={`Logradouro: ${
+                  logradouro={
                     fav?.logradouro ? fav?.logradouro : "Não informado."
-                  }`}
-                  bairro={`Bairro: ${
-                    fav?.bairro ? fav?.bairro : "Não informado."
-                  }`}
-                  cidade={`Cidade: ${
-                    fav?.localidade ? fav?.localidade : "Não informado."
-                  }`}
-                  estado={`Estado: ${fav?.uf ? fav?.uf : "Não informado."}`}
+                  }
+                  bairro={fav?.bairro ? fav?.bairro : "Não informado."}
+                  cidade={fav?.localidade ? fav?.localidade : "Não informado."}
+                  estado={fav?.uf ? fav?.uf : "Não informado."}
                   onClick={() => removeFavorite(fav)}
                 />
               ))}

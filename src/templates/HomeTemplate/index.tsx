@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import Layout from "../../components/Layout";
 import { Container } from "../../components/Container/styles";
 import { CardContext } from "../../contexts/CardContext";
-import * as Styles from "./styles";
 import BreadCrumb from "../../components/BreadCrumb";
 import theme from "../../styles/theme";
+import Swal from "sweetalert2";
+import * as Styles from "./styles";
 
 export type DataTypes = {
   [key: string]: string;
@@ -27,7 +28,11 @@ const Home = () => {
       setData(json);
     } catch (error) {
       console.error(error);
-      alert("O CEP informado não existe!");
+      Swal.fire({
+        title: "Erro",
+        text: "Insira um CEP válido de até 8 dígitos",
+        icon: "error",
+      });
     }
   };
 
@@ -74,17 +79,20 @@ const Home = () => {
                   <>
                     <Styles.InfoCep>
                       <p>
-                        Logradouro:{" "}
+                        <b>Logradouro:</b>{" "}
                         {data?.logradouro ? data?.logradouro : "Não informado."}
                       </p>
                       <p>
-                        Bairro: {data?.bairro ? data?.bairro : "Não informado"}
+                        <b>Bairro:</b>{" "}
+                        {data?.bairro ? data?.bairro : "Não informado"}
                       </p>
                       <p>
-                        Cidade:{" "}
+                        <b>Cidade:</b>{" "}
                         {data?.localidade ? data?.localidade : "Não informado"}
                       </p>
-                      <p>Estado: {data?.uf ? data.uf : "Não informado"}</p>
+                      <p>
+                        <b>Estado:</b> {data?.uf ? data.uf : "Não informado"}
+                      </p>
 
                       <button
                         disabled={isBlocked ? true : false}

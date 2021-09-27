@@ -14,10 +14,22 @@ const Card = ({ logradouro, bairro, cidade, estado, onClick }: CardProps) => {
     <Styles.Box>
       <img src="../img/map.png" alt="Mapa" />
       <div>
-        <p>{logradouro}</p>
-        <p>{bairro}</p>
-        <p>{cidade}</p>
-        <p>{estado}</p>
+        <p>
+          <b>Logradouro: </b>
+          {logradouro}
+        </p>
+        <p>
+          <b>Bairro: </b>
+          {bairro}
+        </p>
+        <p>
+          <b>Cidade: </b>
+          {cidade}
+        </p>
+        <p>
+          <b>Estado: </b>
+          {estado}
+        </p>
         <button onClick={onClick}>Excluir</button>
       </div>
     </Styles.Box>
