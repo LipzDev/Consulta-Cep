@@ -5,6 +5,7 @@ import { CardContext } from "../../contexts/CardContext";
 import BreadCrumb from "../../components/BreadCrumb";
 import theme from "../../styles/theme";
 import Swal from "sweetalert2";
+import Link from "next/link";
 import * as Styles from "./styles";
 
 export type DataTypes = {
@@ -47,7 +48,9 @@ const Home = () => {
     <Layout>
       <Container>
         <Styles.Wrapper>
-          <BreadCrumb page_1="/" page_2="/favoritos" />
+          <BreadCrumb>
+            <Link href={"/"}>Início</Link>
+          </BreadCrumb>
 
           <Styles.Content>
             <Styles.CepContent>

@@ -8,22 +8,20 @@ export const BreadCrumb = styled.ul`
     align-items: center;
     margin-top: 20px;
 
-    div {
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
     margin-bottom: 30px;
-  `}
-`;
-
-export const Li = styled.li<ActiveProps>`
-  ${({ theme, active }) => css`
-    list-style: none;
 
     a {
       text-decoration: none;
-      color: ${active ? theme.colors.primary : theme.colors.darkGray};
+      color: ${theme.colors.darkGray};
+      margin-right: 10px;
+
+      :hover {
+        opacity: 0.5;
+      }
+    }
+
+    a + a {
+      margin-left: 10px;
     }
   `}
 `;

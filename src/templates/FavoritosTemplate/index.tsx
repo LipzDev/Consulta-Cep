@@ -5,6 +5,7 @@ import { Container } from "../../components/Container/styles";
 import Layout from "../../components/Layout";
 import { CardContext } from "../../contexts/CardContext";
 import { DataTypes } from "../HomeTemplate/index";
+import Link from "next/link";
 import * as Styles from "./styles";
 
 const FavoritosTemplate = () => {
@@ -29,7 +30,11 @@ const FavoritosTemplate = () => {
     <Layout>
       <Container>
         <Styles.Wrapper>
-          <BreadCrumb page_1="/" page_2="/favoritos" />
+          <BreadCrumb>
+            <Link href={"/"}>Início</Link>
+            {">"}
+            <Link href={"/favoritos"}>Favoritos</Link>
+          </BreadCrumb>
 
           <div>
             {favorite?.length === 0 && (
