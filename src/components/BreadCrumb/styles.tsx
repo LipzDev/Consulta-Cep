@@ -23,7 +23,7 @@ export const Li = styled.li<ActiveProps>`
 
     a {
       text-decoration: none;
-      color: ${active ? theme.colors.primary : "black"};
+      color: ${active ? theme.colors.primary : theme.colors.darkGray};
     }
   `}
 `;

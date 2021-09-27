@@ -55,7 +55,7 @@ const Home = () => {
                 }
               >
                 <input
-                  type="text"
+                  type="number"
                   placeholder="00000-000"
                   required
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

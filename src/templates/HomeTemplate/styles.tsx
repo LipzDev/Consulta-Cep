@@ -20,11 +20,13 @@ export const CepContent = styled.div`
     h1 {
       margin-bottom: 30px;
       font-weight: 300;
+      color: ${theme.colors.darkGray};
     }
 
     small {
       margin-bottom: 3px;
       margin-top: 30px;
+      color: ${theme.colors.darkGray};
     }
 
     img {
@@ -52,6 +54,13 @@ export const Form = styled.form`
       padding-left: 10px;
       border-radius: 5px;
       border: 0;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield;
+      }
     }
 
     button {
@@ -85,7 +94,6 @@ export const InfoCep = styled.div`
     font-family: "poppins", "arial";
     border-radius: 5px;
     border: 0;
-    /* border: 1px solid #ccc; */
     background: #5f7db3;
     letter-spacing: 1px;
     color: white;

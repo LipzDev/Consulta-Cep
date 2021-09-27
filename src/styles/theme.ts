@@ -31,7 +31,7 @@ export default {
     white: "#FFF",
     black: "#141414",
     gray: "#8F8F8F",
-    darkGray: "#3e3e3e",
+    darkGray: "#4a4a4a",
     gradient: "linear-gradient(90deg, #1d1d1d 0%, #232323 50%)",
   },
 } as const;
