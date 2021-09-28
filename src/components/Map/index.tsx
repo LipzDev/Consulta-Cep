@@ -2,8 +2,8 @@ import React from "react";
 import { GET_LAT_LNG } from "../../services/api";
 
 type MapProps = {
-  lat: number;
-  lng: number;
+  lat: number | undefined;
+  lng: number | undefined;
 };
 
 const map = ({ lat, lng }: MapProps) => {

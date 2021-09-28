@@ -8,10 +8,11 @@ export const Box = styled.div`
     min-height: 380px;
     position: relative;
 
-    img {
+    iframe {
       max-width: 100%;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
+      border: 0;
     }
 
     p {

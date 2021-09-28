@@ -1,4 +1,5 @@
 import React from "react";
+import Map from "../../components/Map";
 import * as Styles from "./styles";
 
 type CardProps = {
@@ -6,13 +7,23 @@ type CardProps = {
   bairro?: string;
   cidade?: string;
   estado?: string;
+  lat?: number | undefined;
+  lng?: number | undefined;
   onClick?: () => void;
 };
 
-const Card = ({ logradouro, bairro, cidade, estado, onClick }: CardProps) => {
+const Card = ({
+  logradouro,
+  bairro,
+  cidade,
+  estado,
+  onClick,
+  lat,
+  lng,
+}: CardProps) => {
   return (
     <Styles.Box>
-      <img src="../img/map.png" alt="Mapa" />
+      <Map lat={lat} lng={lng} />
       <div>
         <p>
           <b>Logradouro: </b>

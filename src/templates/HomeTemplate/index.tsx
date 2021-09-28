@@ -10,16 +10,16 @@ import Map from "../../components/Map";
 import * as Styles from "./styles";
 
 export type DataTypes = {
-  [key: string]: string;
+  [key: string]: any;
 };
 
 const Home = () => {
-  const [cep, setCep] = useState<string | undefined>();
+  const [cep, setCep] = useState<any>();
   const [data, setData] = useState<DataTypes>();
   const [isBlocked, setIsBlocked] = useState<boolean>(true);
   const { locale, setLocale }: any = useContext(CardContext);
   const [mapInfo, setMapInfo]: any = useState();
-  const result = mapInfo?.results[0]?.geometry?.location;
+  const mapPosition = mapInfo?.results[0]?.geometry?.location;
 
   // TODO: FUNÇÃO QUE FAZ A CONVERSÃO DO CEP EM LATITUDE E LONGITUDE
   const GET_LAT_LONG = async () => {
@@ -53,7 +53,7 @@ const Home = () => {
   // // FUNÇÃO QUE SALVA OS CARDS
   const saveFavorite = () => {
     setIsBlocked(true);
-    setLocale([...locale, data]);
+    setLocale([...locale, [data, mapPosition]]);
   };
 
   return (
@@ -132,7 +132,7 @@ const Home = () => {
                         {isBlocked ? "Salvo !" : "Salvar ?"}
                       </button>
                     </Styles.InfoCep>
-                    <Map lat={result?.lat} lng={result?.lng} />
+                    <Map lat={mapPosition?.lat} lng={mapPosition?.lng} />
                   </>
                 )}
               </Styles.LocaleContent>

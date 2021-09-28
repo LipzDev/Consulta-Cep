@@ -13,10 +13,9 @@ const FavoritosTemplate = () => {
   const { locale, setLocale }: any = useContext(CardContext);
 
   // FUNÇÃO QUE REMOVE OS CARDS
-
   const removeFavorite = (fav: DataTypes) => {
-    setLocale((prev: String[]) =>
-      prev.filter((el: any) => el?.cep !== fav?.cep),
+    setLocale((prev: any) =>
+      prev.filter((el: any) => el[0]?.cep !== fav[0]?.cep),
     );
   };
 
@@ -44,16 +43,16 @@ const FavoritosTemplate = () => {
             )}
 
             <Styles.CardsSection>
-              {favorite?.map((fav: DataTypes, index: number) => (
+              {favorite?.map((item: any, index: any) => (
                 <Card
                   key={index}
-                  logradouro={
-                    fav?.logradouro ? fav?.logradouro : "Não informado."
-                  }
-                  bairro={fav?.bairro ? fav?.bairro : "Não informado."}
-                  cidade={fav?.localidade ? fav?.localidade : "Não informado."}
-                  estado={fav?.uf ? fav?.uf : "Não informado."}
-                  onClick={() => removeFavorite(fav)}
+                  lng={item[1].lng}
+                  lat={item[1].lat}
+                  logradouro={item[0].logradouro}
+                  bairro={item[0]?.bairro}
+                  cidade={item[0]?.localidade}
+                  estado={item[0]?.uf}
+                  onClick={() => removeFavorite(item)}
                 />
               ))}
             </Styles.CardsSection>
