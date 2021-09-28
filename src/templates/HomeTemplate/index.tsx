@@ -18,27 +18,23 @@ const Home = () => {
   const [data, setData] = useState<DataTypes>();
   const [isBlocked, setIsBlocked] = useState<boolean>(true);
   const { locale, setLocale }: any = useContext(CardContext);
+  const [mapInfo, setMapInfo]: any = useState();
+  const result = mapInfo?.results[0]?.geometry?.location;
 
-  // TODO: STATE Q PEGA AS INFO DA API
-  const [local, setLocal] = useState();
-
-  // TODO: CONST QUE FILTRA O OBJETO QUE
-  const LAT_LNG = local?.results[0]?.geometry?.location;
-
-  // TODO: ENDPOINT DO GOOGLE GEOCODE PRECISO ESCONDER A KEY E PRECISO VALIDAR O CEP PARA SEMPRE TER O 00000-000
-  const endpoint = `https://maps.googleapis.com/maps/api/geocode/json?address=${cep}&key=AIzaSyBpag7bQCb9utplIXoQMIg3EvwlbRz-Q0s`;
-
-  // TODO: FUNÇÃO QUE FAZ O FETCH NO ENDPOINT
+  // TODO: FUNÇÃO QUE FAZ A CONVERSÃO DO CEP EM LATITUDE E LONGITUDE
   const GET_LAT_LONG = async () => {
-    const response = await fetch(`${endpoint}`);
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${cep}&key=${process.env.API_KEY}`,
+    );
     const json = await response.json();
-    setLocal(json);
+    setMapInfo(json);
   };
 
-  // FUNÇÃO QUE FAZ O FETCH
+  // FUNÇÃO QUE FAZ O FETCH NA LISTA DE
   const zipCodeSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsBlocked(false);
+
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const json = await response.json();
@@ -55,7 +51,6 @@ const Home = () => {
   };
 
   // // FUNÇÃO QUE SALVA OS CARDS
-
   const saveFavorite = () => {
     setIsBlocked(true);
     setLocale([...locale, data]);
@@ -87,6 +82,7 @@ const Home = () => {
                     setCep(e.target.value)
                   }
                 />
+
                 <button>
                   <img src="../img/lupe.png" alt="Imagem de lupa" />
                 </button>
@@ -98,24 +94,24 @@ const Home = () => {
                 {data && (
                   <>
                     <Styles.InfoCep>
-                      {/* TODO: COMPONENTIZAR ESTE CARA */}
                       <p>
                         <b>Logradouro:</b>{" "}
                         {data?.logradouro ? data?.logradouro : "Não informado."}
                       </p>
+
                       <p>
                         <b>Bairro:</b>{" "}
                         {data?.bairro ? data?.bairro : "Não informado"}
                       </p>
+
                       <p>
                         <b>Cidade:</b>{" "}
                         {data?.localidade ? data?.localidade : "Não informado"}
                       </p>
+
                       <p>
                         <b>Estado:</b> {data?.uf ? data.uf : "Não informado"}
                       </p>
-
-                      {/* TODO: REFATORAR ESTE BOTÃO */}
 
                       <button
                         disabled={isBlocked ? true : false}
@@ -136,8 +132,7 @@ const Home = () => {
                         {isBlocked ? "Salvo !" : "Salvar ?"}
                       </button>
                     </Styles.InfoCep>
-                    {/* // TODO: MAPA QUE EXIBE A LOCALIZAÇÃO */}
-                    <Map lat={LAT_LNG?.lat} lng={LAT_LNG?.lng} />
+                    <Map lat={result?.lat} lng={result?.lng} />
                   </>
                 )}
               </Styles.LocaleContent>

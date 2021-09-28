@@ -91,6 +91,7 @@ export const InfoCep = styled.div`
 
   button {
     margin-top: 10px;
+    margin-bottom: 30px;
     padding: 5px 20px;
     font-weight: 600;
     font-family: "poppins", "arial";
@@ -109,15 +110,15 @@ export const LocaleContent = styled.div`
       color: ${theme.colors.darkGray};
     }
 
-    img {
+    iframe {
       max-width: 380px;
-      vertical-align: middle;
+      height: 300px;
       border-radius: 5px;
-      margin-top: 50px;
+      border: none;
     }
 
     @media screen and (max-width: 768px) {
-      img {
+      iframe {
         max-width: 100%;
       }
     }
