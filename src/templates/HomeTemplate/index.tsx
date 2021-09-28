@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Layout from "../../components/Layout";
 import { Container } from "../../components/Container/styles";
 import { CardContext } from "../../contexts/CardContext";
@@ -6,6 +6,7 @@ import BreadCrumb from "../../components/BreadCrumb";
 import theme from "../../styles/theme";
 import Swal from "sweetalert2";
 import Link from "next/link";
+import Map from "../../components/Map";
 import * as Styles from "./styles";
 
 export type DataTypes = {
@@ -18,8 +19,23 @@ const Home = () => {
   const [isBlocked, setIsBlocked] = useState<boolean>(true);
   const { locale, setLocale }: any = useContext(CardContext);
 
-  // FUNÇÃO QUE FAZ O FETCH
+  // TODO: STATE Q PEGA AS INFO DA API
+  const [local, setLocal] = useState();
 
+  // TODO: CONST QUE FILTRA O OBJETO QUE
+  const LAT_LNG = local?.results[0]?.geometry?.location;
+
+  // TODO: ENDPOINT DO GOOGLE GEOCODE PRECISO ESCONDER A KEY E PRECISO VALIDAR O CEP PARA SEMPRE TER O 00000-000
+  const endpoint = `https://maps.googleapis.com/maps/api/geocode/json?address=${cep}&key=AIzaSyBpag7bQCb9utplIXoQMIg3EvwlbRz-Q0s`;
+
+  // TODO: FUNÇÃO QUE FAZ O FETCH NO ENDPOINT
+  const GET_LAT_LONG = async () => {
+    const response = await fetch(`${endpoint}`);
+    const json = await response.json();
+    setLocal(json);
+  };
+
+  // FUNÇÃO QUE FAZ O FETCH
   const zipCodeSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsBlocked(false);
@@ -27,6 +43,7 @@ const Home = () => {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const json = await response.json();
       setData(json);
+      GET_LAT_LONG();
     } catch (error) {
       console.error(error);
       Swal.fire({
@@ -63,7 +80,7 @@ const Home = () => {
                 }
               >
                 <input
-                  type="number"
+                  type="text"
                   placeholder="00000-000"
                   required
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -81,6 +98,7 @@ const Home = () => {
                 {data && (
                   <>
                     <Styles.InfoCep>
+                      {/* TODO: COMPONENTIZAR ESTE CARA */}
                       <p>
                         <b>Logradouro:</b>{" "}
                         {data?.logradouro ? data?.logradouro : "Não informado."}
@@ -96,6 +114,8 @@ const Home = () => {
                       <p>
                         <b>Estado:</b> {data?.uf ? data.uf : "Não informado"}
                       </p>
+
+                      {/* TODO: REFATORAR ESTE BOTÃO */}
 
                       <button
                         disabled={isBlocked ? true : false}
@@ -116,7 +136,8 @@ const Home = () => {
                         {isBlocked ? "Salvo !" : "Salvar ?"}
                       </button>
                     </Styles.InfoCep>
-                    <img src="../img/car.gif" alt="Carro" />
+                    {/* // TODO: MAPA QUE EXIBE A LOCALIZAÇÃO */}
+                    <Map lat={LAT_LNG?.lat} lng={LAT_LNG?.lng} />
                   </>
                 )}
               </Styles.LocaleContent>

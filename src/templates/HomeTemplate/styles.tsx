@@ -54,6 +54,7 @@ export const Form = styled.form`
       padding-left: 10px;
       border-radius: 5px;
       border: 0;
+      outline: none;
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
