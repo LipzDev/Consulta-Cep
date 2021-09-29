@@ -1,7 +1,13 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.section`
-  height: 100vh;
+  ${({ theme }) => css`
+    height: 100vh;
+
+    small {
+      color: ${theme.colors.darkGray};
+    }
+  `}
 `;
 
 export const CardsSection = styled.div`

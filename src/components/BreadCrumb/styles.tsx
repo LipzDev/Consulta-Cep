@@ -14,9 +14,10 @@ export const BreadCrumb = styled.ul`
       text-decoration: none;
       color: ${theme.colors.darkGray};
       margin-right: 10px;
+      transition: 0.3s;
 
       :hover {
-        opacity: 0.5;
+        color: ${theme.colors.primary};
       }
     }
 
