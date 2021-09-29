@@ -2,7 +2,7 @@
 
 </br>
 
-<img src="https://drive.google.com/file/d/1dnoPvZSDcaDEmkGvE6XvAKdhuf1Dn1FS/view?usp=sharing" alt="" width="1270"/>
+<img src="https://github.com/LipzDev/Consulta-Cep/blob/master/public/img/gif.gif" alt="" width="1270"/>
 
 </br>
 Resultado final: https://consulta-cep-lipzdev.vercel.app/
