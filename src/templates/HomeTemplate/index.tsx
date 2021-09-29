@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import Link from "next/link";
 import Map from "../../components/Map";
 import Button from "../../components/Button";
+import Head from "next/head";
 import * as Styles from "./styles";
 
 export type DataTypes = {
@@ -59,6 +60,29 @@ const Home = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Consulta de CEP | Início</title>
+        <link rel="shortcut icon" href="/img/favicon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        {/* TAGS DE SEO OG*/}
+        <meta property="og:title" content="Busca de CEP"></meta>
+        <meta property="og:locale" content="pt-BR" />
+        <meta property="og:site_name" content="Busca de CEP"></meta>
+        <meta property="og:description" content="Site criado por LipzDev." />
+        <meta name="description" content="Site criado por LipzDev."></meta>
+        <meta property="og:image" content="/img/logo.png"></meta>
+        {/* TAGS DE SEO TWITTER*/}
+        <meta name="twitter:card" content="summary_large_image"></meta>
+        <meta name="twitter:title" content="Busca de CEP"></meta>
+        <meta
+          name="twitter:description"
+          content="Site criado por LipzDev."
+        ></meta>
+        <meta name="twitter:site" content="@LipzDev"></meta>
+        <meta name="twitter:creator" content="@LipzDev"></meta>
+        <meta name="twitter:image" content="/img/logo.png"></meta>
+        <meta name="theme-color" content="#6C63FF"></meta>
+      </Head>
       <Container>
         <Styles.Wrapper>
           <BreadCrumb>

@@ -6,6 +6,7 @@ import Layout from "../../components/Layout";
 import { CardContext } from "../../contexts/CardContext";
 import { DataTypes } from "../HomeTemplate/index";
 import Link from "next/link";
+import Head from "next/head";
 import * as Styles from "./styles";
 
 const FavoritosTemplate = () => {
@@ -27,6 +28,29 @@ const FavoritosTemplate = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Consulta de CEP | Favoritos</title>
+        <link rel="shortcut icon" href="/img/favicon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        {/* TAGS DE SEO OG*/}
+        <meta property="og:title" content="Busca de CEP"></meta>
+        <meta property="og:locale" content="pt-BR" />
+        <meta property="og:site_name" content="Busca de CEP"></meta>
+        <meta property="og:description" content="Site criado por LipzDev." />
+        <meta name="description" content="Site criado por LipzDev."></meta>
+        <meta property="og:image" content="/img/logo.png"></meta>
+        {/* TAGS DE SEO TWITTER*/}
+        <meta name="twitter:card" content="summary_large_image"></meta>
+        <meta name="twitter:title" content="Busca de CEP"></meta>
+        <meta
+          name="twitter:description"
+          content="Site criado por LipzDev."
+        ></meta>
+        <meta name="twitter:site" content="@LipzDev"></meta>
+        <meta name="twitter:creator" content="@LipzDev"></meta>
+        <meta name="twitter:image" content="/img/logo.png"></meta>
+        <meta name="theme-color" content="#6C63FF"></meta>
+      </Head>
       <Container>
         <Styles.Wrapper>
           <BreadCrumb>
