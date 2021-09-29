@@ -1,7 +1,7 @@
 ## 🚀 Demonstração
 
 </br>
-<img src="https://github.com/LipzDev/Consulta-Cep/blob/master/public/img/gif.gif" alt="" width="1270"/>
+<img src="https://github.com/LipzDev/Consulta-Cep/blob/master/public/img/preview.gif" alt="" width="1270"/>
 </br>
 
 Resultado final: https://consulta-cep-lipzdev.vercel.app/
