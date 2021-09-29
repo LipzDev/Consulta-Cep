@@ -17,11 +17,9 @@ Tecnologias utilizadas:
 - Google Maps iFrame
 - Google Geocode Api
 
-## 🚀 Instalação
+## 🚀 Instruções
 
-Para que este rode em sua máquina, siga os passos abaixo:
-
-Foi utilizado uma api do Google Geocode que me possibilitou transformar o CEP em cordenadas de latitude e longitude, e assim pude inserir elas no iframe do google maps!
+Foi utilizado uma api do Google Geocode que me possibilitou transformar o CEP em cordenadas de latitude e longitude, assim pude inseri-las no iframe do google maps!
 
 ```bash
 # Repositório:
@@ -39,5 +37,5 @@ http://localhost:3000
 
 ## 🚀 Licença
 
-<p>O projeto se encontra sob licença MIT. Para mais detalhes, acesse <a href='license'>license<a>.</p>
+<p>O projeto se encontra sob licença MIT. Para mais detalhes, acesse <a href='https://github.com/LipzDev/Consulta-Cep/blob/master/license'>license<a>.</p>
 <p>Criado por <a href='https://github.com/LipzDev/' target='blank'>Lipz Dev</a></p>
