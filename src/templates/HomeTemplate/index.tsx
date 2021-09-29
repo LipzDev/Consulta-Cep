@@ -3,26 +3,27 @@ import Layout from "../../components/Layout";
 import { Container } from "../../components/Container/styles";
 import { CardContext } from "../../contexts/CardContext";
 import BreadCrumb from "../../components/BreadCrumb";
-import theme from "../../styles/theme";
 import Swal from "sweetalert2";
 import Link from "next/link";
 import Map from "../../components/Map";
+import Button from "../../components/Button";
 import * as Styles from "./styles";
 
 export type DataTypes = {
-  [key: string]: any;
+  [key: string]: string;
+  results?: any;
 };
 
 const Home = () => {
-  const [cep, setCep] = useState<any>();
+  const [cep, setCep] = useState<string>();
   const [data, setData] = useState<DataTypes>();
   const [isBlocked, setIsBlocked] = useState<boolean>(true);
-  const { locale, setLocale }: any = useContext(CardContext);
-  const [mapInfo, setMapInfo]: any = useState();
+  const { locale, setLocale } = useContext<any>(CardContext);
+  const [mapInfo, setMapInfo] = useState<DataTypes>();
   const mapPosition = mapInfo?.results[0]?.geometry?.location;
 
-  // TODO: FUNÇÃO QUE FAZ A CONVERSÃO DO CEP EM LATITUDE E LONGITUDE
-  const GET_LAT_LONG = async () => {
+  // FUNÇÃO QUE FAZ A CONVERSÃO DO CEP EM LATITUDE E LONGITUDE
+  const convertZipCode = async () => {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${cep}&key=${process.env.API_KEY}`,
     );
@@ -39,7 +40,7 @@ const Home = () => {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const json = await response.json();
       setData(json);
-      GET_LAT_LONG();
+      convertZipCode();
     } catch (error) {
       console.error(error);
       Swal.fire({
@@ -67,7 +68,7 @@ const Home = () => {
           <Styles.Content>
             <Styles.CepContent>
               <h1>Olá, seja bem vindo!</h1>
-              {!data && <img src="../img/img1.svg" alt="Map" />}
+              {!data && <img src="../img/img1.svg" alt="Imagem" />}
               <small>Insira seu CEP abaixo:</small>
               <Styles.Form
                 onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
@@ -75,7 +76,7 @@ const Home = () => {
                 }
               >
                 <input
-                  type="text"
+                  type="number"
                   placeholder="00000-000"
                   required
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -89,7 +90,6 @@ const Home = () => {
               </Styles.Form>
 
               {/* EXIBE AS INFORMAÇÕES DA API */}
-
               <Styles.LocaleContent>
                 {data && (
                   <>
@@ -101,36 +101,30 @@ const Home = () => {
 
                       <p>
                         <b>Bairro:</b>{" "}
-                        {data?.bairro ? data?.bairro : "Não informado"}
+                        {data?.bairro ? data?.bairro : "Não informado."}
                       </p>
 
                       <p>
                         <b>Cidade:</b>{" "}
-                        {data?.localidade ? data?.localidade : "Não informado"}
+                        {data?.localidade ? data?.localidade : "Não informado."}
                       </p>
 
                       <p>
-                        <b>Estado:</b> {data?.uf ? data.uf : "Não informado"}
+                        <b>Estado:</b> {data?.uf ? data.uf : "Não informado."}
                       </p>
 
-                      <button
+                      <Button
                         disabled={isBlocked ? true : false}
-                        style={{
-                          backgroundColor: isBlocked
-                            ? "#ccc"
-                            : theme.colors.primary,
-                          color: isBlocked ? "#3e3e3e" : "white",
-                          cursor: isBlocked ? "no-drop" : "pointer",
-                        }}
                         onClick={() => saveFavorite()}
                         title={
                           isBlocked
                             ? "Insira outro CEP para favoritar*"
                             : "Deseja salvar o CEP pesquisado ?*"
                         }
+                        actived={isBlocked}
                       >
                         {isBlocked ? "Salvo !" : "Salvar ?"}
-                      </button>
+                      </Button>
                     </Styles.InfoCep>
                     <Map lat={mapPosition?.lat} lng={mapPosition?.lng} />
                   </>

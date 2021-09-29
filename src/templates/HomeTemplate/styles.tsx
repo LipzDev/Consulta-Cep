@@ -35,7 +35,11 @@ export const CepContent = styled.div`
 
     @media screen and (max-width: 768px) {
       h1 {
-        margin-bottom: 0;
+        margin-bottom: 30px;
+      }
+      img {
+        margin: 0 auto;
+        max-width: 80%;
       }
     }
   `}
@@ -88,20 +92,6 @@ export const Form = styled.form`
 
 export const InfoCep = styled.div`
   margin-top: 20px;
-
-  button {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding: 5px 20px;
-    font-weight: 600;
-    font-family: "poppins", "arial";
-    border-radius: 5px;
-    border: 0;
-    background: #5f7db3;
-    letter-spacing: 1px;
-    color: white;
-    cursor: pointer;
-  }
 `;
 
 export const LocaleContent = styled.div`

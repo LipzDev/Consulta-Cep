@@ -13,27 +13,29 @@ export const Box = styled.div`
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       border: 0;
+      min-height: 220px;
     }
 
     p {
       color: ${theme.colors.darkGray};
+      margin-left: 15px;
     }
 
     div {
-      margin-left: 15px;
       min-height: 170px;
 
       button {
+        margin-left: 15px;
         position: absolute;
         bottom: 15px;
         margin-top: 5px;
-        padding: 5px 20px;
-        font-weight: 600;
-        font-family: "poppins", "arial";
         border-radius: 5px;
-        border: 0;
-        background: ${theme.colors.dangerLight};
+        padding: 7px 20px;
+        border: none;
+        font-family: "poppins";
+        font-weight: 600;
         letter-spacing: 1px;
+        background: ${theme.colors.dangerLight};
         color: white;
         cursor: pointer;
       }

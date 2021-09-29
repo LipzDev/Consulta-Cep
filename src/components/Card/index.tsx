@@ -1,5 +1,6 @@
 import React from "react";
 import Map from "../../components/Map";
+import Button from "../Button";
 import * as Styles from "./styles";
 
 type CardProps = {
@@ -41,6 +42,7 @@ const Card = ({
           <b>Estado: </b>
           {estado}
         </p>
+
         <button onClick={onClick}>Excluir</button>
       </div>
     </Styles.Box>
