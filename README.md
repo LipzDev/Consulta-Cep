@@ -1,10 +1,9 @@
-## 🚀 demonstração
+## 🚀 Demonstração
 
 </br>
-
-<img src="https://github.com/LipzDev/Consulta-Cep/blob/master/public/img/gif.gif" alt="" width="1270"/>
-
+<img src="https://github.com/LipzDev/Consulta-Cep/blob/master/public/img/preview.gif" alt="" width="1270"/>
 </br>
+
 Resultado final: https://consulta-cep-lipzdev.vercel.app/
 
 ## 🚀 Tecnologias
@@ -40,5 +39,5 @@ http://localhost:3000
 
 ## 🚀 Licença
 
-<p>O projeto se encontra sob licença MIT. Para mais detalhes, acesse <a href='LICENSE'>license<a>.</p>
+<p>O projeto se encontra sob licença MIT. Para mais detalhes, acesse <a href='license'>license<a>.</p>
 <p>Criado por <a href='https://github.com/LipzDev/' target='blank'>Lipz Dev</a></p>

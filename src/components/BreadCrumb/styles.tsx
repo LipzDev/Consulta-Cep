@@ -17,7 +17,7 @@ export const BreadCrumb = styled.ul`
       transition: 0.3s;
 
       :hover {
-        color: ${theme.colors.primary};
+        /* color: ${theme.colors.primary}; */
       }
     }
 
