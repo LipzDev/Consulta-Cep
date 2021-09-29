@@ -29,7 +29,7 @@ const FavoritosTemplate = () => {
   return (
     <Layout>
       <Head>
-        <title>Consulta de CEP | Favoritos</title>
+        <title>Consulta de CEP</title>
         <link rel="shortcut icon" href="/img/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
         {/* TAGS DE SEO OG*/}
