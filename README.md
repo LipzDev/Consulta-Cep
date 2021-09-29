@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🚀 demonstração
 
-## Getting Started
+</br>
 
-First, run the development server:
+<img src="https://drive.google.com/file/d/1dnoPvZSDcaDEmkGvE6XvAKdhuf1Dn1FS/view?usp=sharing" alt="" width="1270"/>
+
+</br>
+Resultado final: https://consulta-cep-lipzdev.vercel.app/
+
+## 🚀 Tecnologias
+
+Tecnologias utilizadas:
+
+- React JS
+- Next JS
+- Styles Components
+- TypeScript
+- Google Maps iFrame
+- Google Geocode Api
+
+## 🚀 Instalação
+
+Para que este rode em sua máquina, siga os passos abaixo:
+
+Foi utilizado uma api do Google Geocode que me possibilitou transformar o CEP em cordenadas de latitude e longitude, e assim pude inserir elas no iframe do google maps!
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Repositório:
+$ git clone https://github.com/LipzDev/Consulta-Cep.git
+
+# Instalação:
+$ yarn install
+
+# Rodar o projeto:
+$ yarn dev
+
+#Projeto online:
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Licença
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p>O projeto se encontra sob licença MIT. Para mais detalhes, acesse <a href='LICENSE'>license<a>.</p>
+<p>Criado por <a href='https://github.com/LipzDev/' target='blank'>Lipz Dev</a></p>

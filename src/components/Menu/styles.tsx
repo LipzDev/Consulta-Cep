@@ -29,7 +29,7 @@ export const Nav = styled.nav`
         align-items: center;
         justify-content: center;
 
-        transition: 0.5s;
+        transition: 0.2s;
       }
 
       li + li {
