@@ -19,7 +19,7 @@ Tecnologias utilizadas:
 
 ## 🚀 Instruções
 
-Foi utilizado uma api do Google Geocode que me possibilitou transformar o CEP em cordenadas de latitude e longitude, assim pude inseri-las no iframe do google maps!
+Foi utilizado uma api do Google Geocode que possibilitou transformar o CEP em cordenadas de latitude e longitude, assim pude inseri-las no iframe do google maps!
 
 ```bash
 # Repositório:
